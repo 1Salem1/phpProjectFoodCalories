@@ -4,21 +4,21 @@
 require'./utils/connexion.php';
 require_once'./utils/fonction.php';
 include_once('includes/head.php');
+include_once('./utils/Session.php');
 
-if(!isset($_SESSION["email"])){
-    exit(); 
-}
 
-$email = $_SESSION['email'];
-$stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+$db = new Database();
+
+
+$stmt = $db->prepare("SELECT * FROM users WHERE email = :email");
 $stmt->bindParam(':email', $email);
 $stmt->execute();
 $user = $stmt->fetch();
+$session->set('user', $user);
 
 
 
-
-$sql = $pdo->prepare("SELECT repas, kcal FROM food where user_id = :user_id");
+$sql = $db->prepare("SELECT repas, kcal FROM food where user_id = :user_id");
 $sql->bindParam(':user_id', $_SESSION["email"], PDO::PARAM_STR);
 $sql->execute();
 
@@ -59,7 +59,7 @@ include_once('includes/header.php');
             </div>
 
             <div>IMC</div>
-            <div><?php echo $user['poids']; ?>Kg</div>
+  
             <div class="custom-shape-divider-bottom-1671192619">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
                     preserveAspectRatio="none">

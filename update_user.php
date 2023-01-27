@@ -3,6 +3,9 @@ require'./utils/connexion.php';
 require_once'./utils/fonction.php';
 include_once('includes/head.php');
 
+
+$db = new Database();
+
 if (isset($_POST['submit'])) {
     $prenom = $_POST['prenom'];
     $age = $_POST['age'];
@@ -10,7 +13,7 @@ if (isset($_POST['submit'])) {
     $poids = $_POST['poids'];
     $taille = $_POST['taille'];
 
-    $stmt = $pdo->prepare("UPDATE users SET prenom=:prenom, age=:age, sexe=:sexe, poids=:poids, taille=:taille WHERE email=:id");
+    $stmt = $db->prepare("UPDATE users SET prenom=:prenom, age=:age, sexe=:sexe, poids=:poids, taille=:taille WHERE email=:id");
     $count = $stmt->execute(array(':prenom' => $prenom, ':age' => $age, ':sexe' => $sexe, ':poids' => $poids, ':taille' => $taille, ':id' => $_GET['id']));
     if ($count > 0) {
         // update was successful

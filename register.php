@@ -2,9 +2,13 @@
 
 require './utils/connexion.php';
 require './utils/fonction.php';
+include_once('./utils/Session.php');
 
-unset($_SESSION['id']);
-unset($_SESSION['email']);
+
+$session = new Session();
+$db = new Database();
+
+$session->destroy();
 
 if (isset($_POST['register'])) {
     $email = $_POST['email'];
@@ -17,7 +21,7 @@ if (isset($_POST['register'])) {
 
     // Check if email already exists
     $check_email = "SELECT email FROM users WHERE email = :email";
-    $stmt = $pdo->prepare($check_email);
+    $stmt = $db->prepare($check_email);
     $stmt->bindParam(':email', $email);
     $stmt->execute();
     $count = $stmt->rowCount();
@@ -38,9 +42,8 @@ if (isset($_POST['register'])) {
             $stmt->bindParam(':password', $password);
             $stmt->execute();
 
-            $_SESSION['email'] = $email;
-            $_SESSION['id'] = $pdo->lastInsertId();
-
+            $session->set('email', $email);
+         
             header("Location: index.php");
         }
     }

@@ -1,37 +1,32 @@
 <?php
 
 // j'importe ma boite a outils.
-require'./utils/connexion.php';
-require_once'./utils/fonction.php';
+include_once('./utils/connexion.php');
+require_once('./utils/fonction.php');
+include_once('./Food.php');
 
 
 
-if( !isset($_SESSION["email"]) || empty($_SESSION["email"])){
-    header("Location: login.php");
-    exit(); 
-}
 
+
+
+$db = new Database();
 
 
 if (isset($_POST["food"])){
 
-    $repas=$_POST['repas'];
-    $kcal=$_POST['kcal'];
-    $id = uniqid();
-    $user_id = $_SESSION["email"];
+    $session = new Session();
 
-    if( !empty($repas) &&
-        !empty($kcal)
-        ){
-        $sql = "INSERT INTO food VALUES ( :id, :repas, :kcal, :user_id)";
-        $sql = $pdo->prepare($sql);
-        $sql->bindParam('id', $id, PDO::PARAM_INT);
-        $sql->bindParam('repas', $repas, PDO::PARAM_STR);
-        $sql->bindParam('kcal', $kcal, PDO::PARAM_INT);
-        $sql->bindParam('user_id', $user_id, PDO::PARAM_STR);
-        $sql->execute();
+    if (isset($_POST["food"])) {
+        $repas = $_POST['repas'];
+        $kcal = $_POST['kcal'];
+        $user_id = $_SESSION["email"];
     
+        if (!empty($repas) && !empty($kcal)) {
+            $food = new Food($repas, $kcal, $user_id);
+            $food->save();
             header("Location: index.php");
+        }
     }
 }
 

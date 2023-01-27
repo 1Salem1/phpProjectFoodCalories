@@ -1,11 +1,12 @@
 <?php
-// j'importe ma boite a outils avec ma base de données.
 
-use LDAP\Result;
 
 require './utils/connexion.php';
 require_once './utils/fonction.php';
+include_once('./utils/Session.php');
 
+$session = new Session();
+$db = new Database();
 
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -13,7 +14,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $password = stripslashes($_REQUEST['password']);
 
     $sql = "SELECT * FROM users WHERE email='$email'";
-    $select = $pdo->prepare($sql);
+    $select = $db->prepare($sql);
     $select->execute();
     $result = $select->fetch();
 
@@ -21,7 +22,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     if ($count === 1) {
         // check if the password is correct
         if (password_verify($password, $result['password'])) {
-            $_SESSION['user'] = $result;
+            $session->set('email', $email);
             header("Location: index.php");
         } else {
             echo "Le nom d'utilisateur ou le mot de passe est incorrect.";

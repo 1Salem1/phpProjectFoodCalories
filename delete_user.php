@@ -1,12 +1,12 @@
 <?php
 require './utils/connexion.php';
 include_once('includes/head.php');
-
+$db = new Database();
 
     $email = $_GET['id'];
   
     if ($email != $_SESSION['email']){
-        $stmt = $pdo->prepare("DELETE FROM users WHERE email = :email");
+        $stmt = $db->prepare("DELETE FROM users WHERE email = :email");
         $stmt->execute(array(':email' => $email));
         header("Location: dashboard.php");
     }

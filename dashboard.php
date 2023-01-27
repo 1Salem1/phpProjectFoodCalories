@@ -5,7 +5,7 @@ include_once('includes/head.php');
 
 
 
-
+$db = new Database();
 
 
 $page=[
@@ -73,7 +73,7 @@ tr:nth-child(even) {
     </thead>
     <tbody>
         <?php
-            $stmt = $pdo->prepare("SELECT * FROM users");
+            $stmt = $db->prepare("SELECT * FROM users");
             $stmt->execute();
             $users = $stmt->fetchAll();
             foreach ($users as $user) { ?>
