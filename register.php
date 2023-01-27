@@ -43,7 +43,9 @@ if (isset($_POST['register'])) {
             $stmt->execute();
 
             $session->set('email', $email);
-         
+            if ($stmt->execute() && $result = $stmt->fetch() && empty($_SESSION['user'])){
+                $session->set('user', $result);
+            }
             header("Location: index.php");
         }
     }

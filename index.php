@@ -10,11 +10,10 @@ include_once('./utils/Session.php');
 $db = new Database();
 
 
-$stmt = $db->prepare("SELECT * FROM users WHERE email = :email");
-$stmt->bindParam(':email', $email);
-$stmt->execute();
-$user = $stmt->fetch();
-$session->set('user', $user);
+
+
+
+
 
 
 

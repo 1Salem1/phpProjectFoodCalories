@@ -17,12 +17,15 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $select = $db->prepare($sql);
     $select->execute();
     $result = $select->fetch();
-
+    $session->set('user', $result);
     $count = $select->rowCount();
     if ($count === 1) {
         // check if the password is correct
         if (password_verify($password, $result['password'])) {
-            $session->set('email', $email);
+           $session->set('email', $email);
+           if ($select->execute() && $result = $select->fetch() && empty($_SESSION['user'])){
+            $session->set('user', $result);
+        }
             header("Location: index.php");
         } else {
             echo "Le nom d'utilisateur ou le mot de passe est incorrect.";
