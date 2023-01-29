@@ -1,4 +1,4 @@
-<?
+<?php
 
 class Food {
     public $id;
@@ -6,12 +6,16 @@ class Food {
     public $kcal;
     public $user_id;
 
+
+    
     public function __construct($repas, $kcal, $user_id) {
         $this->id = uniqid();
         $this->repas = $repas;
         $this->kcal = $kcal;
         $this->user_id = $user_id;
     }
+
+
 
     public function save() {
         $db = new Database();

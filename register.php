@@ -8,7 +8,7 @@ include_once('./utils/Session.php');
 $session = new Session();
 $db = new Database();
 
-$session->destroy();
+
 
 if (isset($_POST['register'])) {
     $email = $_POST['email'];
@@ -32,7 +32,7 @@ if (isset($_POST['register'])) {
 
         if (valid_donnees($email)) {
             $query = "INSERT INTO users (email, prenom, age, sexe, poids, taille, password) VALUES (:email, :prenom, :age, :sexe, :poids, :taille, :password)";
-            $stmt = $pdo->prepare($query);
+            $stmt = $db->prepare($query);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':prenom', $prenom);
             $stmt->bindParam(':age', $age);
@@ -43,7 +43,7 @@ if (isset($_POST['register'])) {
             $stmt->execute();
 
             $session->set('email', $email);
-            if ($stmt->execute() && $result = $stmt->fetch() && empty($_SESSION['user'])){
+            if ($result = $stmt->fetch() && empty($_SESSION['user'])){
                 $session->set('user', $result);
             }
             header("Location: index.php");

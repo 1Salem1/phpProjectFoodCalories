@@ -3,7 +3,9 @@
 // j'importe ma boite a outils.
 include_once('./utils/connexion.php');
 require_once('./utils/fonction.php');
+include_once('./utils/Session.php');
 include_once('./Food.php');
+
 
 
 
@@ -85,4 +87,4 @@ include_once('includes/header.php');
 
 </footer>
 
-<!-- <?php include_once('includes/footer.php'); ?> -->
+<?php include_once('includes/footer.php'); ?>

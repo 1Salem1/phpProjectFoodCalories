@@ -53,7 +53,7 @@ include_once('includes/header.php');
         <?php } ?>
     </div>
 
-                    <?php echo $_SESSION['email']; ?>
+                    <?php echo $username; ?>
                 </div>
                 <a href="logout.php">Logout</a>
             </div>
