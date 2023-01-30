@@ -3,6 +3,18 @@ require'./utils/connexion.php';
 require_once'./utils/fonction.php';
 include_once('includes/head.php');
 
+/*
+
+Ce code PHP gère la mise à jour d'un utilisateur dans la base de données. Il est exécuté lorsque le formulaire de mise à jour est soumis.
+Il instancie d'abord une nouvelle instance de la classe Database, qui se connecte à la base de données.
+Ensuite, il vérifie si le formulaire a été soumis en utilisant l'instruction if (isset($_POST['submit'])). Si le formulaire a été soumis, les données du formulaire sont stockées dans des variables ($prenom, $age, $sexe, $poids, $taille).
+Ensuite, une requête SQL de mise à jour est préparée en utilisant la méthode prepare() de l'objet $db. 
+a requête met à jour les informations de l'utilisateur en utilisant les valeurs stockées dans les variables et l'ID de l'utilisateur, 
+qui est passé en tant que paramètre $_GET['id'].
+
+*/
+
+
 
 $db = new Database();
 

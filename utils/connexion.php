@@ -1,7 +1,17 @@
 <?php
 
+/*
+Ce code crée une classe appelée "Database" 
+qui se connecte à une base de données MySQL. 
+Elle définit les informations de connexion 
+(nom de serveur, nom de la base de données, nom d'utilisateur et mot de passe) 
+et utilise la bibliothèque PDO pour établir une connexion à la base de données. 
+Si une erreur de connexion se produit, un message d'erreur sera affiché. 
+La classe a également une méthode "prepare" qui peut être utilisée 
+pour préparer des requêtes SQL à exécuter sur la base de données.
+*/
 
-//
+
 class Database {
     private $servername;
     private $dbname;
