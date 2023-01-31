@@ -1,4 +1,11 @@
 <?php 
+/*
+
+Cette classe représente une session PHP. Elle permet de démarrer une session, 
+d'enregistrer des valeurs dans la session, de récupérer des valeurs de la session et de détruire la session.
+
+*/
+
 
 class Session {
     public function __construct() {

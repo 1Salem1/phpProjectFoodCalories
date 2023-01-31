@@ -1,4 +1,17 @@
 <?php
+/*
+
+Cette classe PHP définit une classe nommée "Food". 
+Cette classe a des propriétés publiques pour stocker l'ID, 
+le nom du repas, les calories et l'ID de l'utilisateur associé à ce repas. 
+Il existe également une méthode publique "__construct" qui permet d'initialiser 
+les propriétés de la classe avec des valeurs lors de la création d'une nouvelle instance de la classe.
+
+La méthode "save" enregistre les détails du repas dans une base de données en utilisant une instance de la classe "Database". 
+Le code exécute une requête SQL "INSERT" pour ajouter les détails du repas dans la table "food" de la base de données.
+
+*/
+
 
 class Food {
     public $id;

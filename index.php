@@ -10,7 +10,9 @@ include_once('./utils/Session.php');
 $db = new Database();
 
 
-
+if(!$_SESSION['email']){
+    header("Location: login.php");
+}
 
 
 

@@ -1,4 +1,27 @@
+
+
+
+
 <?
+
+
+/*
+
+Ceci est un code PHP qui définit une classe appelée "User". Cette classe possède plusieurs méthodes qui sont utilisées pour interagir avec un utilisateur enregistré dans une base de données.
+
+La classe a un constructeur qui reçoit une connexion à une base de données (variable $pdo) et stocke le courriel d'utilisateur actuel dans la session ($email).
+
+Les méthodes incluent:
+
+getUserByEmail: Cela sélectionne un utilisateur de la base de données en utilisant l'email de l'utilisateur actuel et le retourne.
+getUserDataByEmail: Cela sélectionne un utilisateur de la base de données en utilisant un email spécifié en entrée et le retourne.
+isAdmin: Cela vérifie si l'utilisateur actuel est un administrateur en regardant si la valeur 'isAdmin' dans la base de données est égale à 1.
+logout: Cela déconnecte l'utilisateur en effaçant les données de session et en redirigeant vers la page de connexion.
+
+*/ 
+
+
+
 require './utils/connexion.php';
 require_once './utils/fonction.php';
 
