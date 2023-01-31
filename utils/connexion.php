@@ -16,7 +16,7 @@ class Database {
         $this->servername = "localhost";
         $this->dbname = "food";
         $this->user = "root";
-        $this->pass = "";
+        $this->pass = "root";
         try {
             $this->pdo = new PDO("mysql:host=$this->servername;dbname=$this->dbname", $this->user, $this->pass);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

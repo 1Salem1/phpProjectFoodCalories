@@ -4,7 +4,7 @@ include_once('includes/head.php');
 $db = new Database();
 
 
-  
+
     if ($email != $_SESSION['email']){
         $stmt = $db->prepare("DELETE FROM users WHERE email = :email");
         $stmt->execute(array(':email' => $_GET['id']));
