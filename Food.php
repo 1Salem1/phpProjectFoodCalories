@@ -38,7 +38,7 @@ class Food {
             'id' => $this->id,
             'repas' => $this->repas,
             'kcal' => $this->kcal,
-            'user_id' => $this->user_id
+            'user_id' => $this->user_id,
         ]);
     }
 }

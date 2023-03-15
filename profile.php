@@ -86,12 +86,7 @@ include_once('includes/header.php');
                         (this.value)">
                         <output id="outputBis"><?php echo $data['poids'];?></output>
                     </div>
-
-      
                 </form>
-
-
-
             </div>
         </div>
     </div>
